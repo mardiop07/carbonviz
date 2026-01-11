@@ -1,2 +1,0 @@
-# carbonviz
-Created with CodeSandbox
