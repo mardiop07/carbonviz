@@ -1,0 +1,55 @@
+site,taille(octets),energy_kWh,cleaner_than,green_host,country,category,co2_grid_grams,co2_grid_litres,co2_renewable_grams,co2_renewable_litres
+https://www.google.com,1000000,0.0002109445631504,0.8,0,United States,Search Engine,0.1042,0.058,0.0851,0.0473
+https://www.youtube.com,713137,0.0001504323729313,0.87,0,United States,Streaming / Video,0.0743,0.0413,0.0607,0.0338
+https://www.facebook.com,2500000,0.000527361407876,0.5,0,United States,Social Media,0.2605,0.1449,0.2128,0.1183
+https://www.amazon.com,1000000,0.0002109445631504,0.8,0,United States,E-commerce,0.1042,0.058,0.0851,0.0473
+https://www.netflix.com,3087345,0.0006512586423195,0.42,0,United States,Streaming / Video,0.3217,0.1789,0.2627,0.1461
+https://www.cnn.com,5010809,0.0010570029155351,0.25,0,United States,News / Media,0.5222,0.2904,0.4264,0.2372
+https://www.reddit.com,4000000,0.0008437782526016,0.32,0,United States,Social Media,0.4168,0.2318,0.3404,0.1893
+https://www.linkedin.com,2500000,0.000527361407876,0.5,0,United States,Corporate / Company,0.2605,0.1449,0.2128,0.1183
+https://www.twitter.com,4000000,0.0008437782526016,0.32,0,United States,Social Media,0.4168,0.2318,0.3404,0.1893
+https://www.instagram.com,728229,0.0001536159482784,0.87,0,United States,Social Media,0.0759,0.0422,0.062,0.0345
+https://www.lemonde.fr,4000000,0.0008437782526016,0.32,0,France,News / Media,0.4168,0.2318,0.3404,0.1893
+https://www.lefigaro.fr,1072747,0.0002262901472859,0.79,0,France,News / Media,0.1118,0.0622,0.0913,0.0508
+https://www.laposte.fr,1000000,0.0002109445631504,0.8,0,France,Other,0.1042,0.058,0.0851,0.0473
+https://www.gouvernement.fr,1000000,0.0002109445631504,0.8,0,France,Government / Administration,0.1042,0.058,0.0851,0.0473
+https://www.bbc.co.uk,619325,0.0001306432415731,0.89,0,United Kingdom,News / Media,0.0645,0.0359,0.0527,0.0293
+https://www.theguardian.com,1266597,0.0002671817508526,0.74,0,United Kingdom,News / Media,0.132,0.0734,0.1078,0.06
+https://www.gov.uk,2500000,0.000527361407876,0.5,0,United Kingdom,Government / Administration,0.2605,0.1449,0.2128,0.1183
+https://www.nhs.uk,1000000,0.0002109445631504,0.8,0,United Kingdom,Government / Administration,0.1042,0.058,0.0851,0.0473
+https://www.dw.com,1000000,0.0002109445631504,0.8,1,Germany,News / Media,0.1042,0.058,0.0851,0.0473
+https://www.ecosia.org,1000000,0.0002109445631504,0.8,1,Germany,Environment / ONG,0.1042,0.058,0.0851,0.0473
+https://www.spiegel.de,2082490,0.000439289943315,0.57,0,Germany,News / Media,0.217,0.1207,0.1772,0.0986
+https://www.spotify.com,2500000,0.000527361407876,0.5,0,Sweden,Other,0.2605,0.1449,0.2128,0.1183
+https://www.ikea.com,4000000,0.0008437782526016,0.32,1,Sweden,E-commerce,0.4168,0.2318,0.3404,0.1893
+https://www.hm.com,1000000,0.0002109445631504,0.8,0,Sweden,E-commerce,0.1042,0.058,0.0851,0.0473
+https://www.booking.com,726427,0.0001532358261756,0.87,0,Netherlands,Other,0.0757,0.0421,0.0618,0.0344
+https://www.greenpeace.org,1000000,0.0002109445631504,0.8,1,Netherlands,Environment / ONG,0.1042,0.058,0.0851,0.0473
+https://www.alibaba.com,2500000,0.000527361407876,0.5,0,China,E-commerce,0.2605,0.1449,0.2128,0.1183
+https://www.tencent.com,2500000,0.000527361407876,0.5,0,China,Corporate / Company,0.2605,0.1449,0.2128,0.1183
+https://www.tiktok.com,1000000,0.0002109445631504,0.8,0,China,Social Media,0.1042,0.058,0.0851,0.0473
+https://www.baidu.com,1000000,0.0002109445631504,0.8,0,China,Search Engine,0.1042,0.058,0.0851,0.0473
+https://www.yahoo.co.jp,1000000,0.0002109445631504,0.8,0,Japan,Other,0.1042,0.058,0.0851,0.0473
+https://www.rakuten.co.jp,4000000,0.0008437782526016,0.32,0,Japan,E-commerce,0.4168,0.2318,0.3404,0.1893
+https://www.ntt.com,4000000,0.0008437782526016,0.32,0,Japan,Tech / Developer Tools,0.4168,0.2318,0.3404,0.1893
+https://www.samsung.com,4000000,0.0008437782526016,0.32,0,South Korea,Corporate / Company,0.4168,0.2318,0.3404,0.1893
+https://www.naver.com,4000000,0.0008437782526016,0.32,0,South Korea,Search Engine,0.4168,0.2318,0.3404,0.1893
+https://www.daum.net,608607,0.0001283823377452,0.89,0,South Korea,Other,0.0634,0.0353,0.0518,0.0288
+https://www.shopify.com,4000000,0.0008437782526016,0.32,0,Canada,E-commerce,0.4168,0.2318,0.3404,0.1893
+https://www.canada.ca,1000000,0.0002109445631504,0.8,0,Canada,Government / Administration,0.1042,0.058,0.0851,0.0473
+https://www.globo.com,2368239,0.0004995671412907,0.52,0,Brazil,News / Media,0.2468,0.1373,0.2015,0.1121
+https://www.uol.com.br,765902,0.000161562862806,0.86,0,Brazil,News / Media,0.0798,0.0444,0.0652,0.0363
+https://www.correios.com.br,2500000,0.000527361407876,0.5,0,Brazil,Government / Administration,0.2605,0.1449,0.2128,0.1183
+https://www.flipkart.com,1024567,0.0002161268382333,0.8,0,India,E-commerce,0.1068,0.0594,0.0872,0.0485
+https://www.ndtv.com,1000000,0.0002109445631504,0.8,0,India,News / Media,0.1042,0.058,0.0851,0.0473
+https://www.timesofindia.com,1244013,0.0002624177788384,0.75,0,India,News / Media,0.1296,0.0721,0.1059,0.0589
+https://www.wikipedia.org,1000000,0.0002109445631504,0.8,1,Global,Education / Knowledge,0.1042,0.058,0.0851,0.0473
+https://www.mozilla.org,1000000,0.0002109445631504,0.8,1,United States,Other,0.1042,0.058,0.0851,0.0473
+https://www.protonmail.com,4000000,0.0008437782526016,0.32,1,Switzerland,Other,0.4168,0.2318,0.3404,0.1893
+https://www.proton.me,4000000,0.0008437782526016,0.32,1,Switzerland,Other,0.4168,0.2318,0.3404,0.1893
+https://www.protonvpn.com,4000000,0.0008437782526016,0.32,1,Switzerland,Other,0.4168,0.2318,0.3404,0.1893
+https://www.openstreetmap.org,1000000,0.0002109445631504,0.8,1,Global,Education / Knowledge,0.1042,0.058,0.0851,0.0473
+https://www.equinix.com,1000000,0.0002109445631504,0.8,1,United States,Tech / Developer Tools,0.1042,0.058,0.0851,0.0473
+https://www.cloudflare.com,968318,0.0002042614175006,0.81,1,United States,Tech / Developer Tools,0.1009,0.0561,0.0824,0.0458
+https://github.io,1000000,0.0002109445631504,0.8,1,United States,Tech / Developer Tools,0.1042,0.058,0.0851,0.0473
+https://www.vercel.com,663468,0.0001399549674242,0.88,1,United States,Tech / Developer Tools,0.0691,0.0385,0.0565,0.0314

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarbonViz - Empreinte Carbone du Web</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-light">
+    <!-- ================= MENU DASHBOARD (TOP) ================= -->
+    <nav class="top-menu">
+      <div class="menu-container">
+        <div class="brand">
+        <a href="#">
+          <img src="assets/logocarbon.png" alt="CarbonViz logo" />
+        </a>
+      </div>
+        <!-- Bouton hamburger -->
+        <button class="menu-toggle" aria-label="Menu">
+          ☰
+        </button>
+    
+        <div class="menu-links">
+          <a href="#viz-bar" class="menu-link">Top pollueurs</a>
+          <a href="#viz-scatter" class="menu-link">Facteurs & CO₂</a>
+          <a href="#viz-map" class="menu-link">Carte</a>
+          <a href="#viz-donuts" class="menu-link">Répartition</a>
+          <a href="#viz-radar" class="menu-link">Profils</a>
+          <a href="data.html" class="menu-link info-link">Informations</a>
+        </div>
+      </div>
+    </nav>
+    
+
+
+    <header id="intro">
+      <div class="hero-saas">
+        <div class="hero-glow"></div>
+    
+        <h1 class="hero-title">Empreinte Carbone des Sites Web</h1>
+    
+        <p class="hero-subtitle">
+          Visualisation interactive de l'impact écologique du web
+        </p>
+      </div>
+    </header>
+    
+    
+
+    <main class="container">
+      <!-- ===================== BAR CHART ===================== -->
+      <section id="viz-bar">
+        <div class="row">
+          <!-- FILTRES -->
+          <div class="col-12 col-lg-4">
+            <h2>Top Pollueurs</h2>
+            <p>Comparaison des émissions de CO₂ par site.</p>
+
+            <!-- FILTRE PRINCIPAL -->
+            <div class="btn-group mb-3 w-100" role="group">
+              <button id="btn-green-all" class="btn btn-success active">
+                Tous
+              </button>
+              <button id="btn-green" class="btn btn-outline-success">
+                🌱 Vert
+              </button>
+              <button id="btn-not-green" class="btn btn-outline-danger">
+                ❌ Non vert
+              </button>
+            </div>
+
+            <!-- FILTRE AVANCÉ -->
+            <div class="accordion" id="siteFilterAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#siteFilterCollapse"
+                  >
+                    Affiner par site
+                  </button>
+                </h2>
+
+                <div
+                  id="siteFilterCollapse"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="accordion-body p-2">
+                    <input
+                      type="text"
+                      id="site-search"
+                      class="form-control mb-2"
+                      placeholder="Rechercher un site..."
+                    />
+                    <div
+                      id="site-selector"
+                      style="max-height: 250px; overflow: auto"
+                      class="border rounded p-2"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHART -->
+          <div class="col-12 col-lg-8">
+            <div id="chart-bar" class="viz-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- ===================== SCATTER ===================== -->
+      <section id="viz-scatter">
+        <div class="row">
+          <div class="col-12 col-lg-8">
+            <div id="chart-scatter" class="viz-container"></div>
+          </div>
+          <div class="col-12 col-lg-4">
+
+            <h2 class="mb-2">Facteurs techniques & CO₂</h2>
+          
+            <p class="text-muted small">
+              Analyse conjointe de la taille des pages, de l’énergie consommée
+              et du type d’hébergement sur les émissions de CO₂.
+            </p>
+          
+            <!-- FILTRE -->
+            <div class="mb-3">
+              <label for="scatter-country" class="form-label fw-semibold">
+                Filtrer par pays
+              </label>
+              <select id="scatter-country" class="form-select form-select-sm">
+                <option value="ALL">Tous les pays</option>
+              </select>
+            </div>
+          
+            <!-- ACCORDIONS -->
+            <div class="accordion" id="scatterAccordion">
+          
+              <!-- ACCORDION LÉGENDE -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed py-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#scatterLegend"
+                  >
+                    Légende
+                  </button>
+                </h2>
+          
+                <div
+                  id="scatterLegend"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="accordion-body pt-2">
+                    <div id="scatter-legend"></div>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- ACCORDION MODE DE LECTURE -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed py-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#scatterReading"
+                  >
+                    Mode de lecture
+                  </button>
+                </h2>
+          
+                <div
+                  id="scatterReading"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="accordion-body small">
+          
+                    <p class="mb-2">
+                      <strong>Chaque point</strong> représente un site web.
+                    </p>
+          
+                    <ul class="mb-2 ps-3">
+                      <li><strong>Axe X</strong> : taille de la page (MB)</li>
+                      <li><strong>Axe Y</strong> : émissions de CO₂</li>
+                      <li><strong>Couleur</strong> : catégorie du site</li>
+                      <li><strong>Taille du point</strong> : énergie consommée</li>
+                      <li><strong>Forme</strong> : type d’hébergement</li>
+                    </ul>
+          
+                    <div class="alert alert-warning small mt-2 mb-2">
+                      <strong>Attention :</strong><br />
+                      Les points entourés en noir correspondent aux
+                      10&nbsp;% des sites les plus émetteurs de CO₂.
+                    </div>
+          
+                    <p class="mb-0 text-muted">
+                      Comparez les positions relatives des points pour analyser
+                      l’effet combiné de ces facteurs.
+                    </p>
+          
+                  </div>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+          
+          
+      </div>
+        
+      </section>
+
+      <hr />
+
+      <!-- ===================== MAP ===================== -->
+      <section id="viz-map">
+        <h2 class="text-center mb-3">Géographie de la pollution</h2>
+      
+        <div id="chart-map" class="viz-container"></div>
+        <div id="map-details" class="mt-3"></div>
+      </section>
+      <hr />
+      <!-- ===================== donuts ===================== -->
+      <section id="viz-donuts" class="mt-4">
+        <div class="row g-3">
+          <div class="col-lg-4">
+            <h2 class="mb-2">Sites d’un pays</h2>
+            <p class="text-muted small">
+              Chaque part représente un site web du pays sélectionné (couleur = intensité de la métrique).
+            </p>
+      
+            <label class="form-label fw-semibold" for="donuts-country">Pays</label>
+            <select id="donuts-country" class="form-select form-select-sm mb-2"></select>
+      
+            <label class="form-label fw-semibold" for="donuts-metric">Métrique</label>
+            <select id="donuts-metric" class="form-select form-select-sm">
+              <option value="co2_grid_grams">CO₂ (g) / visite</option>
+              <option value="energy_kWh">Énergie (kWh) / visite</option>
+              <option value="size_mb">Taille (MB)</option>
+            </select>
+          </div>
+      
+          <div class="col-lg-8">
+            <div id="chart-donuts" class="viz-container" style="height:520px"></div>
+          </div>
+        </div>
+      </section>
+      
+      <hr />
+
+      <!-- ===================== RADAR ===================== -->
+      <section id="viz-radar">
+        <div class="row">
+      
+          <!-- ===== COLONNE CONTRÔLES (INCHANGÉE) ===== -->
+          <div class="col-lg-3">
+            <h2 class="mb-2">Profil de durabilité</h2>
+      
+            <div class="mb-3">
+              <div class="fw-semibold mb-1">
+                Sites sélectionnés <span class="text-muted">(max 4)</span>
+              </div>
+              <div id="radar-selected-sites" class="selected-sites"></div>
+            </div>
+      
+            <!-- Accordéon : même UX que bar -->
+            <div class="accordion" id="radarFilterAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#radarFilterCollapse"
+                  >
+                    Affiner par site
+                  </button>
+                </h2>
+      
+                <div
+                  id="radarFilterCollapse"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="accordion-body p-2">
+                    <input
+                      type="text"
+                      id="radar-site-search"
+                      class="form-control mb-2"
+                      placeholder="Rechercher un site..."
+                    />
+                    <div
+                      id="radar-site-selector"
+                      style="max-height: 250px; overflow: auto"
+                      class="border rounded p-2"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- ===== COLONNE VISUALISATION (OBLIGATOIRE) ===== -->
+          <div class="col-lg-9">
+            <!-- ⚠️ ID OBLIGATOIRE POUR viz-radar.js -->
+            <div id="chart-radar" class="viz-container"></div>
+          </div>
+      
+        </div>
+      </section>
+      
+
+      
+
+      <footer class="site-footer">
+        <div class="container text-center">
+          <h5 class="footer-title">CarbonViz</h5>
+          <p class="footer-text">
+            Visualisation interactive de l’empreinte carbone des sites web
+          </p>
+          <p class="footer-copy">
+            © 2025 — Projet DataViz • Université Claude Bernard Lyon 1
+          </p>
+        </div>
+      </footer>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="js/viz-bar.js"></script>
+    <script src="js/viz-scatter.js"></script>
+    <script src="js/viz-map.js"></script>
+    <script src="js/viz-radar.js"></script>
+    <script src="js/viz-donuts.js"></script>
+    <script src="js/data-core.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+  </body>
+</html>
