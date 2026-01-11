@@ -92,10 +92,22 @@ window.drawScatter = function (data, { container }) {
 
   const categories = [...new Set(cleanData.map((d) => d.category))];
 
+  // ===============================
+  // ÉTAT DE VISIBILITÉ DES CATÉGORIES
+  // ===============================
+  window.scatterCategoryState = window.scatterCategoryState || {};
+
+  categories.forEach(cat => {
+    if (!(cat in window.scatterCategoryState)) {
+      window.scatterCategoryState[cat] = true;
+    }
+  });
+
   const color = d3
     .scaleOrdinal()
     .domain(categories)
     .range(d3.schemeSet2.concat(d3.schemeTableau10));
+
 
   const radius = d3
     .scaleSqrt()
@@ -290,9 +302,32 @@ window.drawScatter = function (data, { container }) {
     .text("Catégorie du site");
 
   categories.forEach((cat) => {
-    const row = legendCat
-      .append("div")
-      .attr("class", "d-flex align-items-center mb-1");
+  const className = `cat-${cat.replace(/[^a-zA-Z0-9]/g, "")}`;
+
+  const row = legendCat
+    .append("div")
+    .attr("class", "d-flex align-items-center mb-1 legend-item")
+    .style("cursor", "pointer")
+    .style("opacity", window.scatterCategoryState[cat] ? 1 : 0.4)
+    .on("click", () => {
+      // Toggle état
+      window.scatterCategoryState[cat] = !window.scatterCategoryState[cat];
+
+      // Mise à jour des points
+      d3.selectAll(`.${className}`)
+        .transition()
+        .duration(200)
+        .style(
+          "opacity",
+          window.scatterCategoryState[cat] ? 0.85 : 0.05
+        );
+
+      // Mise à jour visuelle de la légende
+      row.style(
+        "opacity",
+        window.scatterCategoryState[cat] ? 1 : 0.4
+      );
+    });
 
     row
       .append("span")
@@ -303,8 +338,12 @@ window.drawScatter = function (data, { container }) {
       .style("border-radius", "50%")
       .style("margin-right", "8px");
 
-    row.append("span").style("font-size", "12px").text(cat);
-  });
+    row
+      .append("span")
+      .style("font-size", "12px")
+      .text(cat);
+});
+
 
   /* ---------- LÉGENDE FORMES (HÉBERGEMENT) ---------- */
   const legendShape = legendContainer.append("div").attr("class", "mb-3");
